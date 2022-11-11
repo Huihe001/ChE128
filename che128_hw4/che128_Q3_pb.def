@@ -1,0 +1,10 @@
+INPUT: che128_Q3_pb.inm
+MODNAME: apmain
+RUNID: che128_Q3_pb
+NEW_RUNID: che128_Q3_pb
+OLD_RUNID: che128_Q3_pb
+PDF: che128_Q3_pb.appdf
+USERNAME: huihe
+XMOD: C:\Program Files\AspenTech\Aspen Plus V12.1\Engine\xeq\apmain
+SPONLY:
+DBCONN: _1916pwk.ads

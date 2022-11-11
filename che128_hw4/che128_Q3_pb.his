@@ -1,0 +1,429 @@
+
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + +                                                                         + +
+ + +                      ASPEN PLUS CALCULATION HISTORY                     + +
+ + +                                                                         + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+
+ ASPEN PLUS IS A TRADEMARK OF           HOTLINE:
+ ASPEN TECHNOLOGY, INC.                 U.S.A. 888/996-7100
+ 781/221-6400                           EUROPE (44) 1189-226555
+
+ PLATFORM: WIN-X64                                       NOVEMBER 10, 2022   
+ VERSION: 39.0   Build 116                               THURSDAY    
+ INSTALLATION:                                           5:34:54 P.M.        
+
+ THIS COPY OF ASPEN PLUS LICENSED TO UNIVERSITY OF CALIFORNIA        
+
+
+      ASPEN PLUS (R) IS A PROPRIETARY PRODUCT OF ASPEN TECHNOLOGY, INC.
+      (ASPENTECH), AND MAY BE USED ONLY UNDER AGREEMENT WITH ASPENTECH.
+      RESTRICTED RIGHTS LEGEND:  USE, REPRODUCTION, OR DISCLOSURE BY THE
+      U.S. GOVERNMENT IS SUBJECT TO RESTRICTIONS SET FORTH IN 
+      (i) FAR 52.227-14, Alt. III, (ii) FAR 52.227-19, (iii) DFARS 
+      252.227-7013(c)(1)(ii), or (iv) THE ACCOMPANYING LICENSE AGREEMENT,
+      AS APPLICABLE. FOR PURPOSES OF THE FAR, THIS SOFTWARE SHALL BE DEEMED
+      TO BE "UNPUBLISHED" AND LICENSED WITH DISCLOSURE PROHIBITIONS.
+      CONTRACTOR/SUBCONTRACTOR: ASPEN TECHNOLOGY, INC. 20 CROSBY DRIVE,
+      BEDFORD, MA 01730.
+ *** INPUT SUMMARY ***
+
+ >>CURRENT RUN
+
+   ORIGINAL RUN                           NOVEMBER 10, 2022   
+   5:34:54 P.M.                           THURSDAY    
+   INPUT FILE: _1916pwk.inm
+   RUN ID : _1916pwk
+          1    ;
+          2    ;Input file created by Aspen Plus Rel. 39.0 at 17:34:54 Thu Nov 10, 2022
+          3    ;Directory C:\Users\huihe\Documents\AspenTech\Aspen Plus V12.1  Runid _UNNAMED
+          4    ;
+          5
+          6
+          7    DYNAMICS
+          8        DYNAMICS RESULTS=ON
+          9
+         10    IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         11            INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+         12
+         13    DEF-STREAMS CONVEN ALL
+         14
+         15    MODEL-OPTION
+         16
+         17    DATABANKS 'APV121 PURE39' / 'APV121 AQUEOUS' / 'APV121 SOLIDS' &
+         18             / 'APV121 INORGANIC' / 'APESV121 AP-EOS' /  &
+         19            'NISTV121 NIST-TRC' / NOASPENPCD
+         20
+         21    PROP-SOURCES 'APV121 PURE39' / 'APV121 AQUEOUS' /  &
+         22            'APV121 SOLIDS' / 'APV121 INORGANIC' / 'APESV121 AP-EOS' &
+         23             / 'NISTV121 NIST-TRC'
+         24
+         25    COMPONENTS
+         26        METHANOL CH4O /
+         27        ETHANOL C2H6O-2 /
+         28        WATER H2O
+         29
+         30    SOLVE
+         31        RUN-MODE MODE=SIM
+         32
+         33    FLOWSHEET
+         34        BLOCK B1 IN=F OUT=D B
+         35
+         36    PROPERTIES NRTL
+         37
+         38    PROP-DATA NRTL-1
+         39        IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         40            INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+         41        PROP-LIST NRTL
+         42        BPVAL METHANOL ETHANOL 4.711900000 -1162.294900 .3000000000  &
+         43            0.0 0.0 0.0 20.00000000 78.40000000
+         44        BPVAL ETHANOL METHANOL -2.312700000 483.8436000 .3000000000  &
+         45            0.0 0.0 0.0 20.00000000 78.40000000
+         46        BPVAL METHANOL WATER -.6930000000 172.9871000 .3000000000  &
+         47            0.0 0.0 0.0 24.99000000 100.0000000
+         48        BPVAL WATER METHANOL 2.732200000 -617.2687000 .3000000000  &
+         49            0.0 0.0 0.0 24.99000000 100.0000000
+         50        BPVAL ETHANOL WATER -.8009000000 246.1800000 .3000000000  &
+         51            0.0 0.0 0.0 24.99000000 100.0000000
+         52        BPVAL WATER ETHANOL 3.457800000 -586.0809000 .3000000000  &
+         53            0.0 0.0 0.0 24.99000000 100.0000000
+         54
+         55    STREAM F
+         56        SUBSTREAM MIXED PRES=16. <psia> VFRAC=0.  &
+         57            STDVOL-FLOW=10000. <bbl/day>
+         58        MOLE-FLOW METHANOL 0.65 / ETHANOL 0.34 / WATER 0.01
+         59
+         60    BLOCK B1 RADFRAC
+         61        PARAM NSTAGE=16 ALGORITHM=STANDARD MAXOL=25 DAMPING=NONE
+         62        COL-CONFIG CONDENSER=TOTAL
+         63        FEEDS F 9
+         64        PRODUCTS D 1 L / B 16 L
+         65        P-SPEC 1 16. <psia>
+         66        COL-SPECS MOLE-D=910.29230471 MOLE-RR=7.82671697
+         67
+         68    EO-CONV-OPTI
+         69
+         70    STREAM-REPOR MOLEFLOW
+         71    ;
+         72    ;
+         73    ;
+         74    ;
+         75    ;
+ *** INPUT TRANSLATOR MESSAGES ***
+
+  *** THIS RUN USES THE PROPERTIES ENTERPRISE DATABASE ***
+      SQLLOCALDB.APESV121 : (DATAVERSION - 39.0.0.5)                          
+      SQLLOCALDB.APV121 : (DATAVERSION - 39.0.0.3)                            
+      SQLLOCALDB.FACTV121 : (DATAVERSION - 39.0.0.3)                          
+      SQLLOCALDB.NISTV121 : (DATAVERSION - 39.0.0.3)                          
+
+  *   WARNING IN THE "STREAM" PARAGRAPH WHICH BEGINS ON LINE 55                 
+      STREAM NAME: F                                           (STSTRM.29)      
+      COMPONENT MOLE FLOWS OF SUBSTREAM: "MIXED"                                
+      ARE NORMALIZED TO THE TOTAL MOLE FLOW VALUE.                              
+ 
+ 
+
+ PDF updated                                                                      TIME =      0.56
+
+ *** CALCULATION TRACE ***
+
+
+ *** FLOWSHEET ANALYSIS MESSAGES ***
+
+ FLOWSHEET CONNECTIVITY BY STREAMS       
+
+   STREAM     SOURCE     DEST           STREAM     SOURCE     DEST
+   F          ----       B1             D          B1         ----    
+   B          B1         ----                                         
+
+ FLOWSHEET CONNECTIVITY BY BLOCKS        
+
+   BLOCK        INLETS                         OUTLETS
+   B1           F                              D B                         
+
+      COMPUTATION ORDER FOR THE FLOWSHEET IS:
+      B1 
+
+Calculations begin                                                              time      0.02
+
+
+ SIMULATION CALCULATIONS BEGIN                                                    TIME =      0.02
+
+      ENTHALPY CALCULATION FOR INLET STREAM F OF BLOCK B1                         TIME =      0.02
+      KODE = 3  NTRIAL =   3  T = 343.6194  P =  110316.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK B1       MODEL: RADFRAC                                           TIME =      0.02
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    1    2      25.520    
+          2    1    3      2.4323    
+          3    1    3     0.23030    
+
+      CHECKING PHASE EQUILIBRIUM RESULTS                                          TIME =      0.03
+
+      CHECKING PHASE EQUILIBRIUM RESULTS                                          TIME =      0.03
+
+ Report Writer entered                                                            Time =      0.03
+
+ Results generated                                                                Time =      0.04
+
+
+*** INPUT SPECIFICATION MESSAGES ***
+
+ CHANGES WERE MADE TO STREAM       F        11/10/2022   17:52:04:09 
+ STREAM F
+     SUBSTREAM MIXED PRES=1.103161167 VFRAC=0.  &
+         STDVOL-FLOW=1104.078437
+     MOLE-FLOW METHANOL .6499978662 / ETHANOL .3400000000 /  &
+         WATER .0100000000
+
+ CHANGES WERE MADE TO BLOCK        B1       11/10/2022   17:52:04:09 
+ BLOCK B1 RADFRAC
+     PARAM NSTAGE=16 ALGORITHM=STANDARD HYDRAULIC=YES MAXOL=25  &
+         DAMPING=NONE
+     COL-CONFIG CONDENSER=TOTAL
+     FEEDS F 9
+     PRODUCTS D 1 L / B 16 L
+     P-SPEC 1 1.103161167
+     COL-SPECS MOLE-D=910.2923045 MOLE-RR=7.82671697
+     REPORT HYDRAULIC
+
+ OUT-UNITS    IS  NEW 11/10/2022   17:52:04:09 
+ OUT-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+
+ PDF updated                                                                      TIME =   1028.60
+ THIS COPY OF ASPEN PLUS LICENSED TO UNIVERSITY OF CALIFORNIA        
+
+  *   WARNING IN A "STREAM" PARAGRAPH                                           
+      STREAM NAME: F                                           (STSTRM.29)      
+      COMPONENT MOLE FLOWS OF SUBSTREAM: "MIXED"                                
+      ARE NORMALIZED TO THE TOTAL MOLE FLOW VALUE.                              
+ 
+ 
+
+
+Calculations begin                                                              time   1028.62
+
+
+      ENTHALPY CALCULATION FOR INLET STREAM F OF BLOCK B1                         TIME =   1028.63
+      KODE = 3  NTRIAL =   3  T = 343.6194  P =  110316.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK B1       MODEL: RADFRAC                                           TIME =   1028.63
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    1    1     0.22678E-02
+
+      CHECKING PHASE EQUILIBRIUM RESULTS                                          TIME =   1028.63
+
+      CHECKING PHASE EQUILIBRIUM RESULTS                                          TIME =   1028.63
+
+ Report Writer entered                                                            Time =   1028.63
+
+ Results generated                                                                Time =   1028.65
+
+RUN SAVED
+
+
+
+ *** SUMMARY OF ERRORS ***
+
+                  PHYSICAL
+                  PROPERTY  SYSTEM  SIMULATION
+ TERMINAL ERRORS      0        0         0
+   SEVERE ERRORS      0        0         0
+          ERRORS      0        0         0
+        WARNINGS      0        0         1
+
+
+ *** SUMMARY OF ERRORS ***
+
+                  PHYSICAL
+                  PROPERTY  SYSTEM  SIMULATION
+ TERMINAL ERRORS      0        0         0
+   SEVERE ERRORS      0        0         0
+          ERRORS      0        0         0
+        WARNINGS      0        0         1
+
+
+*** INPUT SPECIFICATION MESSAGES ***
+
+ FLOWSHEET    IS GENERATED BECAUSE OF OTHER CHANGES 11/10/2022   18:12:20:99 
+ FLOWSHEET
+     BLOCK B1 IN=F OUT=D B
+
+ CHANGES WERE MADE TO BLOCK        B1       11/10/2022   18:12:20:99 
+ BLOCK B1 RADFRAC
+     PARAM NSTAGE=18 ALGORITHM=STANDARD HYDRAULIC=NO MAXOL=25  &
+         DAMPING=NONE
+     PARAM2 STATIC-DP=YES OLD-SULZER=NO
+     COL-CONFIG CONDENSER=TOTAL CA-CONFIG=INT-1
+     FEEDS F 9
+     PRODUCTS D 1 L / B 18 L
+     P-SPEC 1 1.103161167
+     COL-SPECS MOLE-D=910.2923045 MOLE-RR=4.05124413
+     REPORT NOHYDRAULIC
+
+ PDF updated                                                                      TIME =   2245.19
+ THIS COPY OF ASPEN PLUS LICENSED TO UNIVERSITY OF CALIFORNIA        
+ 
+ 
+
+
+Calculations begin                                                              time   2245.20
+
+
+      UOS BLOCK B1       MODEL: RADFRAC                                           TIME =   2245.20
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    1    5      7.0355    
+          2    1    3     0.81018    
+
+      CHECKING PHASE EQUILIBRIUM RESULTS                                          TIME =   2245.20
+
+      CHECKING PHASE EQUILIBRIUM RESULTS                                          TIME =   2245.20
+
+ Report Writer entered                                                            Time =   2245.21
+
+ Results generated                                                                Time =   2245.22
+
+
+*** INPUT SPECIFICATION MESSAGES ***
+
+ STREAM       F        IS GENERATED BECAUSE OF OTHER CHANGES 11/10/2022   18:17:48:99 
+ STREAM F
+     SUBSTREAM MIXED PRES=1.103161167 VFRAC=0.  &
+         STDVOL-FLOW=1104.078437
+     MOLE-FLOW METHANOL .6499978662 / ETHANOL .3400000000 /  &
+         WATER .0100000000
+
+ CHANGES WERE MADE TO BLOCK        B1       11/10/2022   18:17:48:99 
+ BLOCK B1 RADFRAC
+     PARAM NSTAGE=18 ALGORITHM=STANDARD HYDRAULIC=YES MAXOL=25  &
+         DAMPING=NONE
+     PARAM2 STATIC-DP=YES OLD-SULZER=NO
+     COL-CONFIG CONDENSER=TOTAL CA-CONFIG=INT-1
+     FEEDS F 9
+     PRODUCTS D 1 L / B 18 L
+     P-SPEC 1 1.103161167
+     COL-SPECS MOLE-D=910.2923045 MOLE-RR=4.05124413
+     REPORT HYDRAULIC
+
+ PDF updated                                                                      TIME =   2573.27
+ THIS COPY OF ASPEN PLUS LICENSED TO UNIVERSITY OF CALIFORNIA        
+
+  *   WARNING IN A "STREAM" PARAGRAPH                                           
+      STREAM NAME: F                                           (STSTRM.29)      
+      COMPONENT MOLE FLOWS OF SUBSTREAM: "MIXED"                                
+      ARE NORMALIZED TO THE TOTAL MOLE FLOW VALUE.                              
+ 
+ 
+
+
+Calculations begin                                                              time   2573.28
+
+
+      ENTHALPY CALCULATION FOR INLET STREAM F OF BLOCK B1                         TIME =   2573.28
+      KODE = 3  NTRIAL =   3  T = 343.6194  P =  110316.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK B1       MODEL: RADFRAC                                           TIME =   2573.28
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    1    2     0.15354E-01
+
+      CHECKING PHASE EQUILIBRIUM RESULTS                                          TIME =   2573.28
+
+      CHECKING PHASE EQUILIBRIUM RESULTS                                          TIME =   2573.28
+
+ Report Writer entered                                                            Time =   2573.29
+
+ Results generated                                                                Time =   2573.30
+
+RUN SAVED
+
+
+
+ *** SUMMARY OF ERRORS ***
+
+                  PHYSICAL
+                  PROPERTY  SYSTEM  SIMULATION
+ TERMINAL ERRORS      0        0         0
+   SEVERE ERRORS      0        0         0
+          ERRORS      0        0         0
+        WARNINGS      0        0         2
+
+
+ *** SUMMARY OF ERRORS ***
+
+                  PHYSICAL
+                  PROPERTY  SYSTEM  SIMULATION
+ TERMINAL ERRORS      0        0         0
+   SEVERE ERRORS      0        0         0
+          ERRORS      0        0         0
+        WARNINGS      0        0         2
+
+RUN SAVED
+
+
+
+ *** SUMMARY OF ERRORS ***
+
+                  PHYSICAL
+                  PROPERTY  SYSTEM  SIMULATION
+ TERMINAL ERRORS      0        0         0
+   SEVERE ERRORS      0        0         0
+          ERRORS      0        0         0
+        WARNINGS      0        0         2
+
+
+ *** SUMMARY OF ERRORS ***
+
+                  PHYSICAL
+                  PROPERTY  SYSTEM  SIMULATION
+ TERMINAL ERRORS      0        0         0
+   SEVERE ERRORS      0        0         0
+          ERRORS      0        0         0
+        WARNINGS      0        0         2
+
+RUN SAVED
+
+
+
+ *** SUMMARY OF ERRORS ***
+
+                  PHYSICAL
+                  PROPERTY  SYSTEM  SIMULATION
+ TERMINAL ERRORS      0        0         0
+   SEVERE ERRORS      0        0         0
+          ERRORS      0        0         0
+        WARNINGS      0        0         2
+
+
+ *** SUMMARY OF ERRORS ***
+
+                  PHYSICAL
+                  PROPERTY  SYSTEM  SIMULATION
+ TERMINAL ERRORS      0        0         0
+   SEVERE ERRORS      0        0         0
+          ERRORS      0        0         0
+        WARNINGS      0        0         2
+
+RUN SAVED
+
+
+
+ *** SUMMARY OF ERRORS ***
+
+                  PHYSICAL
+                  PROPERTY  SYSTEM  SIMULATION
+ TERMINAL ERRORS      0        0         0
+   SEVERE ERRORS      0        0         0
+          ERRORS      0        0         0
+        WARNINGS      0        0         2
